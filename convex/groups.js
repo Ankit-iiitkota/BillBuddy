@@ -1,4 +1,4 @@
-import { query } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 import { internal } from "./_generated/api";
 
@@ -189,5 +189,70 @@ export const getGroupExpenses = query({
       balances,
       userLookupMap,
     };
+  },
+});
+
+export const removeGroupMember = mutation({
+  args: { groupId: v.id("groups"), userId: v.id("users") },
+  handler: async (ctx, { groupId, userId }) => {
+    const currentUser = await ctx.runQuery(internal.users.getCurrentUser);
+    const group = await ctx.db.get(groupId);
+    if (!group) {
+      throw new Error("Group not found");
+    }
+
+    const currentMember = group.members.find(
+      (member) => member.userId === currentUser._id
+    );
+    if (!currentMember) {
+      throw new Error("You are not a member of this group");
+    }
+
+    if (currentMember.role !== "admin") {
+      throw new Error("Only group admins can remove members");
+    }
+
+    if (!group.members.some((member) => member.userId === userId)) {
+      throw new Error("Member not found");
+    }
+
+    if (group.members.length <= 1) {
+      throw new Error("A group must contain at least one member");
+    }
+
+    const updatedMembers = group.members.filter(
+      (member) => member.userId !== userId
+    );
+
+    await ctx.db.patch(groupId, {
+      members: updatedMembers,
+    });
+
+    return { removedUserId: userId };
+  },
+});
+
+export const leaveGroup = mutation({
+  args: { groupId: v.id("groups") },
+  handler: async (ctx, { groupId }) => {
+    const currentUser = await ctx.runQuery(internal.users.getCurrentUser);
+    const group = await ctx.db.get(groupId);
+    if (!group) {
+      throw new Error("Group not found");
+    }
+
+    if (!group.members.some((member) => member.userId === currentUser._id)) {
+      throw new Error("You are not a member of this group");
+    }
+
+    const updatedMembers = group.members.filter(
+      (member) => member.userId !== currentUser._id
+    );
+
+    await ctx.db.patch(groupId, {
+      members: updatedMembers,
+    });
+
+    return { leftGroupId: groupId };
   },
 });

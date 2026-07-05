@@ -116,8 +116,14 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    color-scheme: light dark;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply min-h-screen bg-background text-foreground antialiased;
+  }
+  ::selection {
+    @apply bg-green-200 text-slate-900 dark:bg-emerald-500/40 dark:text-slate-50;
   }
 }
 

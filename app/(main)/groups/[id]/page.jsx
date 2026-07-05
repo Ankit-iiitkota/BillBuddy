@@ -4,12 +4,12 @@ import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { api } from "@/convex/_generated/api";
-import { useConvexQuery } from "@/hooks/use-convex-query";
+import { useConvexMutation, useConvexQuery } from "@/hooks/use-convex-query";
 import { BarLoader } from "react-spinners";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { PlusCircle, ArrowLeftRight, ArrowLeft, Users } from "lucide-react";
+import { PlusCircle, ArrowLeftRight, ArrowLeft, Users, LogOut } from "lucide-react";
 import { ExpenseList } from "@/components/expense-list";
 import { SettlementList } from "@/components/settlement-list";
 import { GroupBalances } from "@/components/group-balances";
@@ -19,15 +19,37 @@ export default function GroupExpensesPage() {
   const params = useParams();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("expenses");
+  const [isLeaving, setIsLeaving] = useState(false);
 
-  const { data, isLoading } = useConvexQuery(api.groups.getGroupExpenses, {
+  const { data, isLoading, error } = useConvexQuery(api.groups.getGroupExpenses, {
     groupId: params.id,
   });
+  const leaveGroup = useConvexMutation(api.groups.leaveGroup);
 
   if (isLoading) {
     return (
       <div className="container mx-auto py-12">
         <BarLoader width={"100%"} color="#36d7b7" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto py-12 max-w-3xl">
+        <Card>
+          <CardHeader>
+            <CardTitle>Unable to load this group</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground mb-4">
+              {error.message || "An unexpected error occurred."}
+            </p>
+            <Button variant="outline" onClick={() => router.push("/dashboard")}> 
+              Back to dashboard
+            </Button>
+          </CardContent>
+        </Card>
       </div>
     );
   }
@@ -66,7 +88,7 @@ export default function GroupExpensesPage() {
             </div>
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button asChild variant="outline">
               <Link href={`/settlements/group/${params.id}`}>
                 <ArrowLeftRight className="mr-2 h-4 w-4" />
@@ -78,6 +100,30 @@ export default function GroupExpensesPage() {
                 <PlusCircle className="mr-2 h-4 w-4" />
                 Add expense
               </Link>
+            </Button>
+            <Button
+              variant="destructive"
+              size="sm"
+              onClick={async () => {
+                const confirmed = window.confirm(
+                  "Are you sure you want to leave this group?"
+                );
+                if (!confirmed) return;
+
+                try {
+                  setIsLeaving(true);
+                  await leaveGroup.mutate({ groupId: params.id });
+                  router.push("/dashboard");
+                } catch (error) {
+                  console.error(error);
+                } finally {
+                  setIsLeaving(false);
+                }
+              }}
+              disabled={isLeaving}
+            >
+              <LogOut className="mr-2 h-4 w-4" />
+              {isLeaving ? "Leaving..." : "Leave group"}
             </Button>
           </div>
         </div>
@@ -102,7 +148,7 @@ export default function GroupExpensesPage() {
               <CardTitle className="text-xl">Members</CardTitle>
             </CardHeader>
             <CardContent>
-              <GroupMembers members={members} />
+              <GroupMembers members={members} groupId={params.id} />
             </CardContent>
           </Card>
         </div>
