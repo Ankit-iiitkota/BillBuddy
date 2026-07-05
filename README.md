@@ -1,79 +1,181 @@
-# 🚀 AI Splitwise Clone (Splitter)
+<div align="center">
 
-**Splitter** is a modern, full-stack expense management application inspired by Splitwise.  
-It helps users split expenses, track balances, simplify debts, and gain **AI-powered insights** into their spending habits — all in real time.
+# 💸 BillBuddy - AI Powered Smart Expense Splitting Platform
 
-Built with **Next.js**, **React**, and a **real-time backend**, Splitter focuses on performance, scalability, and a polished user experience.
+Modern • Real-Time • Secure • Beautiful UI
 
----
+<p>
 
-## ✨ Key Highlights
+<img src="https://img.shields.io/github/stars/Ankit-iiitkota/BillBuddy?style=for-the-badge">
+<img src="https://img.shields.io/github/forks/Ankit-iiitkota/BillBuddy?style=for-the-badge">
+<img src="https://img.shields.io/github/license/Ankit-iiitkota/BillBuddy?style=for-the-badge">
+<img src="https://img.shields.io/github/last-commit/Ankit-iiitkota/BillBuddy?style=for-the-badge">
 
-- Smart expense splitting for individuals and groups
-- Automatic debt simplification to minimize transactions
-- Real-time updates across all users
-- AI-powered spending insights and reminders
-- Secure authentication and clean, responsive UI
+</p>
 
----
+<p>
 
-## 🌟 Features
+<img src="https://img.shields.io/badge/Next.js-15-black?logo=nextdotjs">
+<img src="https://img.shields.io/badge/React-19-blue?logo=react">
+<img src="https://img.shields.io/badge/Convex-Realtime-orange">
+<img src="https://img.shields.io/badge/Clerk-Authentication-purple">
+<img src="https://img.shields.io/badge/Gemini-AI-blue">
+<img src="https://img.shields.io/badge/Vercel-Deployed-black">
 
-### 💸 Expense Management
-- Add individual and group expenses
-- Split expenses equally, by percentage, or custom amounts
-- Track who owes whom at any time
+</p>
 
-### 🔄 Debt Simplification
-- Optimized algorithm to reduce unnecessary transactions
-- Clear settlement suggestions for fast resolution
+</div>
 
-### 👥 Groups & Contacts
-- Create and manage groups
-- Track shared expenses with friends
-- View active and settled balances
 
-### 📊 Dashboard & Analytics
-- Monthly spending visualization
-- Balance summaries and activity history
+## 🚀 Live Demo
 
-### 🤖 AI-Powered Insights
-- Spending pattern analysis
-- Smart settlement reminders via email
-- Personalized financial insights
+🌐 Live Website
 
-### ⚡ Real-Time Experience
-- Instant updates using a real-time database
-- Seamless sync across devices
+https://billbuddy.vercel.app
 
-### 🔐 Authentication
-- Secure sign-in and sign-up
-- User profile management
+📂 Repository
 
----
+https://github.com/Ankit-iiitkota/BillBuddy
 
-## 🛠️ Tech Stack
 
-### Frontend
-- **React 19**
-- **Next.js 15 (App Router)**
-- **Tailwind CSS**
-- **Shadcn UI**
-- **React Hook Form + Zod**
+BillBuddy is a modern AI-powered expense splitting platform
+designed for roommates, friends, trips and teams.
 
-### Backend & Database
-- **Convex** (Real-time backend)
-- **Prisma**
+Track expenses, settle debts, monitor spending trends,
+and collaborate in real time using Convex.
 
-### Authentication
-- **Clerk**
+Built with a production-ready architecture using
+Next.js App Router, Clerk Authentication,
+Convex Backend and Gemini AI.
 
-### AI & Automation
-- **Gemini AI** – Spending insights
-- **Inngest** – Scheduled jobs (reminders, AI tasks)
-- **Resend** – Email delivery
 
----
+|    |                        |
+| -- | ---------------------- |
+| 👥 | Group Management       |
+| 💰 | Expense Splitting      |
+| ⚡  | Real-time Updates      |
+| 📊 | Expense Analytics      |
+| 🔐 | Clerk Authentication   |
+| 🤖 | Gemini AI              |
+| 🌙 | Dark Theme             |
+| 📱 | Responsive Design      |
+| 📅 | Multiple Split Methods |
+| 💳 | Balance Tracking       |
 
-## 📂 Project Structure
+
+![Landing](screenshots/landing.png)
+
+![Features](screenshots/features.png)
+
+![Dashboard](screenshots/dashboard.png)
+
+![Expense](screenshots/add-expense.png)
+
+![How It Work](screenshots/how-it-works.png)
+
+
+          Next.js
+
+              │
+
+     Clerk Authentication
+
+              │
+
+         Convex Backend
+
+              │
+
+      Expense Management
+
+              │
+
+     Recharts + Gemini AI
+
+              │
+
+           Vercel
+
+
+| Frontend | Backend | Database | Authentication | AI     | Deployment |
+| -------- | ------- | -------- | -------------- | ------ | ---------- |
+| Next.js  | Convex  | Convex   | Clerk          | Gemini | Vercel     |
+
+
+BillBuddy
+
+app/
+components/
+convex/
+hooks/
+lib/
+public/
+
+middleware.js
+package.json
+README.md
+
+
+git clone https://github.com/Ankit-iiitkota/BillBuddy.git
+
+cd BillBuddy
+
+npm install
+
+npm run dev
+
+CONVEX_DEPLOYMENT=
+
+NEXT_PUBLIC_CONVEX_URL=
+
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+
+CLERK_SECRET_KEY=
+
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+
+CLERK_JWT_ISSUER_DOMAIN=
+
+RESEND_API_KEY=
+
+GEMINI_API_KEY=
+
+
+npm run build
+
+
+git checkout -b feature/amazing-feature
+
+git commit -m "Added amazing feature"
+
+git push origin feature/amazing-feature
+
+
+Ankit Chaurasiya
+
+IIIT Kota
+
+LinkedIn:
+https://linkedin.com/in/......
+
+Portfolio:
+https://.......
+
+GitHub:
+https://github.com/Ankit-iiitkota
+
+
+If you found this project useful,
+
+⭐ Star the repository
+
+🍴 Fork it
+
+🚀 Share it
+
+
+
+
 
