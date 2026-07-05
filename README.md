@@ -65,23 +65,27 @@ Convex Backend and Gemini AI.
 
 ## Landing Page
 
-![Landing](./screenshots/landing.png)
+![Landing](screenshots/landing.png.png)
 
 ## Dashboard
 
-![Dashboard](./screenshots/dashboard.png)
+![Dashboard](screenshots/dashboard.png.png)
 
 ## Add Expense
 
-![Add Expense](./screenshots/add-expense.png)
+![Add Expense](screenshots/add-expense.png.png)
 
 ## Features
 
-![Features](./screenshots/features.png)
+![Features](screenshots/features.png.png)
 
 ## How It Works
 
-![How It Works](./screenshots/how-it-works.png)
+![How It Works](screenshots/how-it-works.png.png)
+
+
+
+
 
 
           Next.js
