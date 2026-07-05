@@ -4,31 +4,39 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ConvexClientProvider } from "@/components/convex-client-provider";
 import Header from "@/components/header";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Splitr",
+  title: "BillBuddy",
   description: "The smartest way to split expenses with friends",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/logos/logo-s.png" sizes="any" />
+        <link rel="icon" href="/logos/BilBuddy_BB.png" sizes="any" />
       </head>
-      <body className={`${inter.className}`}>
+      <body suppressHydrationWarning className={`${inter.className}`}>
         <ClerkProvider
           publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
         >
           <ConvexClientProvider>
-            <Header />
-            <main className="min-h-screen">
-              <Toaster richColors />
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Header />
+              <main className="min-h-screen">
+                <Toaster richColors />
 
-              {children}
-            </main>
+                {children}
+              </main>
+            </ThemeProvider>
           </ConvexClientProvider>
         </ClerkProvider>
       </body>
