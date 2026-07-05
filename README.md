@@ -38,8 +38,7 @@ It allows users to:
 
 **Live Website**
 
-https://YOUR-VERCEL-LINK.vercel.app
-
+https://bill-buddy-vert.vercel.app/
 **Repository**
 
 https://github.com/Ankit-iiitkota/BillBuddy
