@@ -31,7 +31,7 @@ Modern • Real-Time • Secure • Beautiful UI
 
 🌐 Live Website
 
-https://billbuddy.vercel.app
+https://bill-buddy-vert.vercel.app/
 
 📂 Repository
 
