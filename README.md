@@ -1,3 +1,11 @@
+<p align="center">
+  <img src="./screenshots/banner.png" alt="BillBuddy Banner" width="100%">
+</p>
+
+# 
+#
+
+
 <div align="center">
 
 # 💸 BillBuddy - AI Powered Smart Expense Splitting Platform
