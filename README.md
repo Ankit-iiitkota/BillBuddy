@@ -63,15 +63,25 @@ Convex Backend and Gemini AI.
 | 💳 | Balance Tracking       |
 
 
-![Landing](screenshots/landing.png)
+## Landing Page
 
-![Features](screenshots/features.png)
+![Landing](./screenshots/landing.png)
 
-![Dashboard](screenshots/dashboard.png)
+## Dashboard
 
-![Expense](screenshots/add-expense.png)
+![Dashboard](./screenshots/dashboard.png)
 
-![How It Work](screenshots/how-it-works.png)
+## Add Expense
+
+![Add Expense](./screenshots/add-expense.png)
+
+## Features
+
+![Features](./screenshots/features.png)
+
+## How It Works
+
+![How It Works](./screenshots/how-it-works.png)
 
 
           Next.js
